@@ -1,0 +1,23 @@
+body {
+    background-color: #555353;
+    color: rgb(157, 237, 243);
+}
+
+.mainPage {
+    color: rgb(157, 237, 243);
+}
+
+.btn {
+    color:  rgb(157, 237, 243);
+    background-color: brown;
+}
+
+.btn-danger {
+    margin: 5px;
+    margin-top: 50px;
+}
+
+#questions {
+    font-size: larger;
+}
+
