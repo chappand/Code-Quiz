@@ -11,7 +11,7 @@ var userSelection;
 var gotItRight;
 var timeLeft;
 var countdown;
-var scoreCount;
+var scoreCount = 0
 
 var questionList = [
     { 
@@ -78,7 +78,14 @@ var questionList = [
 
 function questionDisplay(ask) {
     if (questionNumber >= 6) {
-        quizStop();
+        clearInterval(countdown);
+        time.innerHTML = "-";
+        score.innerHTML = "Score: " + scoreCount;
+        question.innerHTML = "Congrats!";
+        aButton.innerHTML = "You";
+        bButton.innerHTML = "Finished";
+        cButton.innerHTML = "The";
+        dButton.innerHTML = "Quiz!!!";
         return;
     }
     question.innerText = ask.question
@@ -107,8 +114,8 @@ function newQuiz() {
          timeLeft--;
         time.innerHTML = timeLeft;
 
-        if (timeLeft === 0) {
-            clearInterval(timeLeft)
+        if (timeLeft <= 0) {
+            clearInterval(countdown)
             time.innerHTML = "-";
             score.innerHTML = scoreCount;
         }
@@ -119,5 +126,40 @@ function newQuiz() {
      timeLeft = timeLeft-5;
  };
 
+aButton.addEventListener("click", () => {
+    userSelection = aButton.innerText;
+    if(userSelection === gotItRight) {
+        scoreCount++;
+        questionNumber++;
+        newQuestion();
+    } else wrongAnswer();
+});
+
+bButton.addEventListener("click", () => {
+    userSelection = bButton.innerText;
+    if(userSelection === gotItRight) {
+        scoreCount++;
+        questionNumber++;
+        newQuestion();
+    } else wrongAnswer();
+});
+
+cButton.addEventListener("click", () => {
+    userSelection = cButton.innerText;
+    if(userSelection === gotItRight) {
+        scoreCount++;
+        questionNumber++;
+        newQuestion();
+    } else wrongAnswer();
+});
+
+dButton.addEventListener("click", () => {
+    userSelection = dButton.innerText;
+    if(userSelection === gotItRight) {
+        scoreCount++;
+        questionNumber++;
+        newQuestion();
+    } else wrongAnswer();
+});
 
 newQuiz();
